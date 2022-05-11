@@ -5,12 +5,14 @@ using System.Linq;
 
 namespace StudentsTestsResult
 {
+    /// <summary>
+    /// Deprecated controller. Use FlagsControllerSpan insted(speed optimised).
+    /// </summary>
     internal class FlagsController
     {
-        private static readonly string[] _validFlags = new string[] { "name", "soname", "test", "datefrom", "dateto", "minmark", "maxmark", "sort", "date" };
+        // private static readonly string[] _validFlags = new string[] { "name", "soname", "test", "datefrom", "dateto", "minmark", "maxmark", "sort", "date" };
 
-        private static readonly string[] _validSortFlags = new string[] { "asc", "desc" };
-
+        // private static readonly string[] _validSortFlags = new string[] { "asc", "desc" };
         private string Filters { get; set; }
 
         public Flags FlagsForSearch { get; private set; }
@@ -98,6 +100,9 @@ namespace StudentsTestsResult
 
         private static void FlagsValidation(Dictionary<string, string[]> filtersCollection)
         {
+            var _validFlags = new string[] { "name", "soname", "test", "datefrom", "dateto", "minmark", "maxmark", "sort", "date" };
+            var _validSortFlags = new string[] { "asc", "desc" };
+
             if (filtersCollection.Keys.Any(i => !_validFlags.Contains(i)) ||
                 filtersCollection.Where(i => i.Key != "sort").Any(v => v.Value.Length != 1))
             {
@@ -106,12 +111,12 @@ namespace StudentsTestsResult
 
             if (filtersCollection.TryGetValue("sort", out var sort))
             {
-                if (sort.Length != 2)
-                {
-                    throw new FormatException("The input string contains NOT valid '-sort ...' parameter. It should have two flags, but has less.");
-                }
-
-                if (!_validFlags.Contains(sort[0]) || !_validSortFlags.Contains(sort[1]))
+                // if (sort.Length != 2)
+                // {
+                //    throw new FormatException("The input string contains NOT valid '-sort ...' parameter. It should have two flags, but has less.");
+                // }
+                //
+                if (sort.Length != 2 || !_validFlags.Contains(sort[0]) || sort[0] == "sort" || !_validSortFlags.Contains(sort[1]))
                 {
                     throw new FormatException("The input string contains NOT valid '-sort ...' parameter.");
                 }
