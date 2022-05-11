@@ -7,9 +7,9 @@ namespace StudentsTestsResult
 {
     internal class SearchController
     {
-        private IEnumerable<StudentTest> Tests { get; set; }
+        private IEnumerable<StudentTest> Tests { get; }
 
-        private Flags FlagsForSearch { get; set; }
+        private Flags FlagsForSearch { get; }
 
         public SearchController(IEnumerable<StudentTest> tests, Flags flagsForSearch)
         {

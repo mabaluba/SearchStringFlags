@@ -11,4 +11,9 @@
     </None>
   </ItemGroup>
 
+	<ItemGroup>
+		<InternalsVisibleTo Include="StudentsTestsResult.Tests" />
+		<InternalsVisibleTo Include="Bench" />
+	</ItemGroup>
+
 </Project>

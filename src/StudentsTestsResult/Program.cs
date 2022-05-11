@@ -5,6 +5,9 @@ namespace StudentsTestsResult
 {
     internal class Program
     {
+        /// <summary>
+        /// How should work UI ConsoleApp.
+        /// </summary>
         public static void Main()
         {
             var tests = TestsController.GetTestsResultsFromFile();
@@ -17,7 +20,7 @@ namespace StudentsTestsResult
             {
                 var searchParameters = "-name Robin -soname Scherbatsky -minmark 3 -maxmark 5 -dateto 20/12/2020 -sort date desc";
 
-                var flagsController = new FlagsController(searchParameters);
+                var flagsController = new FlagsControllerSpan(searchParameters);
 
                 var searchFlags = flagsController.FlagsForSearch;
 
